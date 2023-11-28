@@ -2,8 +2,6 @@ import InputView from "../view/InputView.js";
 import MoveDecider from "../domain/MoveDecider.js";
 import OutputView from "../view/OutputView.js";
 
-const moveDecider = new MoveDecider()
-
 class RacingController {
 
    static async run() {
@@ -24,6 +22,7 @@ class RacingController {
     const maxRound = await InputView.inputMaxRound()
     OutputView.printStartLine()
     //라운드 횟수만큼 움직이고 위치 출력 반복
+    const moveDecider = new MoveDecider()
     for (let round = 0; round < maxRound; round++) {
       cars.moveAllBy(moveDecider)
       OutputView.printRoundDto(cars.toRoundDto())
